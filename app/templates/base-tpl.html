@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+        <title>{{ title }} | Planning service</title>
+    {% else %}
+        <title>Count SVC</title>
+    {% endif %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="site-header sticky-top py-1">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2" href="/" aria-label="Count SVC">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24" focusable="false"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+            </a>
+            <a class="py-2 d-none d-md-inline-block" href="/">Главная</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">link1</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">link2</a>
+            <div>
+                {% if current_user.is_anonymous %}
+                <a href="{{ url_for('login') }}">Login</a>
+                {% else %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+                {% endif %}
+            </div>
+        </div>
+        
+    </nav>
+    
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    {% block content %}{% endblock %}
+    </div>
+
+    <footer class="container py-5">
+        <div class="row">
+          <div class="col-12 col-md">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24" focusable="false"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+            <small class="d-block mb-3 text-muted">&copy; 2020</small>
+          </div>
+          <div class="col-6 col-md">
+
+          </div>
+          <div class="col-6 col-md">
+
+          </div>
+          <div class="col-6 col-md">
+
+          </div>
+          <div class="col-6 col-md">
+
+          </div>
+        </div>
+      </footer>
+</body>
+</html>
