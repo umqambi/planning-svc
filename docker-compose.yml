@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  db:
+    environment:
+      POSTGRES_USER: user1ev
+      POSTGRES_PASSWORD: jhlu76v9jjenenj
+      POSTGRES_DB: sitedb
+    image: postgres:latest
+    restart: always
+
+  web:
+    build: .
+    links: 
+      - db
+    ports:
+      - "5600:5600"
+    restart: always
+    environment: 
+      - DATABASE_URL=postgresql://user1ev:jhlu76v9jjenenj@db/sitedb
+    depends_on:
+      - db
+    entrypoint: ["./boot.sh"]
+
