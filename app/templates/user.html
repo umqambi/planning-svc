@@ -1,0 +1,39 @@
+{% extends "base-tpl.html" %}
+
+{% block content %}
+    <h1>Добро пожаловать {{ user.username }}</h1>
+    <hr>
+    {% if events %}
+        <h6>Твои события:</h6>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">start/end</th>
+                <th scope="col">title</th>
+                <th scope="col">body</th>
+                <th scope="col">manage</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                <tr>
+                    <th scope="row">{{ event.id }}</th>
+                    <td>{{ event.start }}<br>{{ event.end }}</td>
+                    <td>{{ event.title }}</td>
+                    <td>{{ event.body }}</td>
+                    <td>
+                        <a class="btn btn-dark btn-sm" href="/delete/{{ user.username }}/{{ event.id }}" role="button">Удалить</a>
+                        <br>
+                        <a class="btn btn-warning btn-sm" href="/edit_event/{{ event.id }}" role="button">Править</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h6>У тебя пока нет событий</h6>
+    {% endif %}
+    <a href="/eventadd" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Создать событие</a>
+
+{% endblock %}

@@ -1,5 +1,31 @@
 {% extends "base-tpl.html" %}
 
 {% block content %}
-    <h1> Main page</h1>
+    <h1> Все задачи сервиса</h1>
+    {% if events %}
+        <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">id События</th>
+                <th scope="col">Начало/Конец</th>
+                <th scope="col">Название</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Пользователь</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                <tr>
+                    <th scope="row">{{ event.id }}</th>
+                    <td>{{ event.start }}<br>{{ event.end }}</td>
+                    <td>{{ event.title }}</td>
+                    <td>{{ event.body }}</td>
+                    <td>{{ event.user_id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h6>На сервисе пока не азмещено событий</h6>
+    {% endif %}
 {% endblock %}

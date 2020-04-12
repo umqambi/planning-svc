@@ -1,0 +1,19 @@
+{% extends "base-tpl.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block content %}
+
+    {% if editing_event %}
+    <h1>Событие {{ editing_event.title }}</h1>
+    <hr>
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            {{ wtf.quick_form(form, button_map={'submit':'success',}) }}
+        </div>
+    </div>
+    {% else %}
+        <h6>Событие не найдено</h6>
+    {% endif %}
+
+{% endblock %}
